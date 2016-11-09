@@ -5,6 +5,8 @@
  */
 package guipractice;
 
+import javax.swing.JRadioButton;
+
 /**
  *
  * @author Ryan
@@ -27,12 +29,15 @@ public class TempCalc extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        scaleSelector = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTemp = new javax.swing.JTextField();
         lblConversionResult = new javax.swing.JLabel();
-        btnFahrConversion = new javax.swing.JButton();
-        btnCelsConversion = new javax.swing.JButton();
+        btnConvert = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        rboCelsius = new javax.swing.JRadioButton();
+        rboFahrenheit = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,38 +47,60 @@ public class TempCalc extends javax.swing.JFrame {
 
         lblConversionResult.setText("XXXX");
 
-        btnFahrConversion.setText("Fahr");
-        btnFahrConversion.addActionListener(new java.awt.event.ActionListener() {
+        btnConvert.setText("Convert");
+        btnConvert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFahrConversionActionPerformed(evt);
+                btnConvertActionPerformed(evt);
             }
         });
 
-        btnCelsConversion.setText("Cels");
-        btnCelsConversion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCelsConversionActionPerformed(evt);
-            }
-        });
+        scaleSelector.add(rboCelsius);
+        rboCelsius.setSelected(true);
+        rboCelsius.setText("Celsius");
+
+        scaleSelector.add(rboFahrenheit);
+        rboFahrenheit.setText("Fahrenheit");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rboFahrenheit)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rboCelsius)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(rboCelsius)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rboFahrenheit)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFahrConversion)
-                    .addComponent(btnCelsConversion))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblConversionResult, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(btnConvert)
+                .addGap(18, 18, 18)
+                .addComponent(lblConversionResult, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,44 +109,37 @@ public class TempCalc extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnFahrConversion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCelsConversion))))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(lblConversionResult)))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblConversionResult)
+                            .addComponent(btnConvert))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFahrConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFahrConversionActionPerformed
+    private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
+        TemperatureConversionService tcs = new TemperatureConversionService();
         String inputTemp = txtTemp.getText();
         double temp = Double.parseDouble(inputTemp);
-        String msgPrefix = "Your temp in Fahr is :";
-        double conversionMath = (temp * 1.8 + 32);
-        conversionMath = Math.round(conversionMath * 100);
-        conversionMath = conversionMath/100;
-        lblConversionResult.setText(msgPrefix + Double.toString(conversionMath));
-    }//GEN-LAST:event_btnFahrConversionActionPerformed
-
-    private void btnCelsConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCelsConversionActionPerformed
-        String inputTemp = txtTemp.getText();
-        double temp = Double.parseDouble(inputTemp);
-        String msgPrefix = "Your temp in Cels is :";
-        double conversionMath = ((temp - 32)/1.8);
-        conversionMath = Math.round(conversionMath * 100);
-        conversionMath = conversionMath/100;
-        lblConversionResult.setText(msgPrefix + Double.toString(conversionMath));
-    }//GEN-LAST:event_btnCelsConversionActionPerformed
+        String msgPrefixFahr = "Your temp in Fahr is : ";
+        String msgPrefixCels = "Your temp in Cels is : ";
+        if(rboFahrenheit.isSelected()){
+        lblConversionResult.setText(msgPrefixFahr + Double.toString(tcs.convertCelsToFahr(temp)));    
+        }
+        else if (rboCelsius.isSelected()){
+        lblConversionResult.setText(msgPrefixCels + Double.toString(tcs.convertFahrToCels(temp)));    
+        }
+        
+        
+    }//GEN-LAST:event_btnConvertActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,11 +177,14 @@ public class TempCalc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCelsConversion;
-    private javax.swing.JButton btnFahrConversion;
+    private javax.swing.JButton btnConvert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblConversionResult;
+    private javax.swing.JRadioButton rboCelsius;
+    private javax.swing.JRadioButton rboFahrenheit;
+    private javax.swing.ButtonGroup scaleSelector;
     private javax.swing.JTextField txtTemp;
     // End of variables declaration//GEN-END:variables
 }
